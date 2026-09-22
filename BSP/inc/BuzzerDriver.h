@@ -1,0 +1,10 @@
+#ifndef BUZZER_DRIVER_H
+#define BUZZER_DRIVER_H
+
+#include "main.h"
+
+#define GPIO_BUZZER_ON() HAL_GPIO_WritePin(BUZZER_GPIO_Port, BUZZER_Pin, GPIO_PIN_SET)
+#define GPIO_BUZZER_OFF() HAL_GPIO_WritePin(BUZZER_GPIO_Port, BUZZER_Pin, GPIO_PIN_RESET)
+#define GPIO_BUZZER_TOGGLE() HAL_GPIO_TogglePin(BUZZER_GPIO_Port, BUZZER_Pin)
+
+#endif /* BUZZER_DRIVER_H */
