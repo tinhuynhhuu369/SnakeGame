@@ -1,8 +1,8 @@
 "C:\Program Files\IAR Systems\Embedded Workbench 9.1\arm\bin\armPROC.dll" 
 
-"C:\Program Files\IAR Systems\Embedded Workbench 9.1\arm\bin\armSTLINK.dll" 
+"C:\Program Files\IAR Systems\Embedded Workbench 9.1\arm\bin\armJLINK.dll" 
 
-"C:\Users\ITUser\Desktop\SnakeGame\CubeMX\SnakeGame\EWARM\SnakeGame\Exe\SnakeGame.out" 
+"C:\Users\ITUser\Desktop\Storage\SnakeGame\CubeMX\SnakeGame\EWARM\SnakeGame\Exe\SnakeGame.out" 
 
 --plugin="C:\Program Files\IAR Systems\Embedded Workbench 9.1\arm\bin\armbat.dll" 
 

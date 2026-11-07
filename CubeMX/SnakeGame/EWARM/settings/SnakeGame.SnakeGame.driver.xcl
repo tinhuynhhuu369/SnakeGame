@@ -14,17 +14,17 @@
 
 "--device=STM32H563ZI" 
 
-"--drv_interface=SWD" 
+"--drv_communication=USB0" 
 
-"--stlink_reset_strategy=0,2" 
+"--drv_interface_speed=auto" 
 
-"--drv_swo_clock_setup=250000000,0,2000000" 
+"--jlink_initial_speed=1000" 
+
+"--jlink_reset_strategy=0,0" 
 
 "--drv_catch_exceptions=0x000" 
 
-"--drv_debug_ap=1" 
-
-"--stlink_probe_supplied_power=3.3" 
+"--drv_swo_clock_setup=72000000,0,2000000" 
 
 
 

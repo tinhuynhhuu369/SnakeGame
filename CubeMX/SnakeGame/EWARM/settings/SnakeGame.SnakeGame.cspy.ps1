@@ -23,9 +23,9 @@
 
 if ($debugfile -eq "")
 {
-& "C:\Program Files\IAR Systems\Embedded Workbench 9.1\common\bin\cspybat" -f "C:\Users\ITUser\Desktop\SnakeGame\CubeMX\SnakeGame\EWARM\settings\SnakeGame.SnakeGame.general.xcl" --backend -f "C:\Users\ITUser\Desktop\SnakeGame\CubeMX\SnakeGame\EWARM\settings\SnakeGame.SnakeGame.driver.xcl" 
+& "C:\Program Files\IAR Systems\Embedded Workbench 9.1\common\bin\cspybat" -f "C:\Users\ITUser\Desktop\Storage\SnakeGame\CubeMX\SnakeGame\EWARM\settings\SnakeGame.SnakeGame.general.xcl" --backend -f "C:\Users\ITUser\Desktop\Storage\SnakeGame\CubeMX\SnakeGame\EWARM\settings\SnakeGame.SnakeGame.driver.xcl" 
 }
 else
 {
-& "C:\Program Files\IAR Systems\Embedded Workbench 9.1\common\bin\cspybat" -f "C:\Users\ITUser\Desktop\SnakeGame\CubeMX\SnakeGame\EWARM\settings\SnakeGame.SnakeGame.general.xcl" --debug_file=$debugfile --backend -f "C:\Users\ITUser\Desktop\SnakeGame\CubeMX\SnakeGame\EWARM\settings\SnakeGame.SnakeGame.driver.xcl" 
+& "C:\Program Files\IAR Systems\Embedded Workbench 9.1\common\bin\cspybat" -f "C:\Users\ITUser\Desktop\Storage\SnakeGame\CubeMX\SnakeGame\EWARM\settings\SnakeGame.SnakeGame.general.xcl" --debug_file=$debugfile --backend -f "C:\Users\ITUser\Desktop\Storage\SnakeGame\CubeMX\SnakeGame\EWARM\settings\SnakeGame.SnakeGame.driver.xcl" 
 }

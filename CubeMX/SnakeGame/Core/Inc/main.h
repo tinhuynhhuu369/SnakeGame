@@ -28,7 +28,7 @@ extern "C" {
 
 /* Includes ------------------------------------------------------------------*/
 #include "stm32h5xx_hal.h"
-#include "HW_Core.h"
+#include "SnakeGame.h"
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
 
@@ -57,10 +57,31 @@ void Error_Handler(void);
 /* USER CODE END EFP */
 
 /* Private defines -----------------------------------------------------------*/
+#define RETURN_BTN_Pin GPIO_PIN_1
+#define RETURN_BTN_GPIO_Port GPIOF
+#define RETURN_BTN_EXTI_IRQn EXTI1_IRQn
+#define OK_BTN_Pin GPIO_PIN_2
+#define OK_BTN_GPIO_Port GPIOF
+#define OK_BTN_EXTI_IRQn EXTI2_IRQn
+#define DOWN_BTN_Pin GPIO_PIN_4
+#define DOWN_BTN_GPIO_Port GPIOF
+#define DOWN_BTN_EXTI_IRQn EXTI4_IRQn
+#define UP_BTN_Pin GPIO_PIN_5
+#define UP_BTN_GPIO_Port GPIOF
+#define UP_BTN_EXTI_IRQn EXTI5_IRQn
 #define BUZZER_Pin GPIO_PIN_13
 #define BUZZER_GPIO_Port GPIOF
 #define LED_RED_Pin GPIO_PIN_14
 #define LED_RED_GPIO_Port GPIOF
+#define RIGHT_BTN_Pin GPIO_PIN_15
+#define RIGHT_BTN_GPIO_Port GPIOF
+#define RIGHT_BTN_EXTI_IRQn EXTI15_IRQn
+#define HOME_BTN_Pin GPIO_PIN_0
+#define HOME_BTN_GPIO_Port GPIOG
+#define HOME_BTN_EXTI_IRQn EXTI0_IRQn
+#define LEFT_BTN_Pin GPIO_PIN_13
+#define LEFT_BTN_GPIO_Port GPIOD
+#define LEFT_BTN_EXTI_IRQn EXTI13_IRQn
 #define LED_GREEN_Pin GPIO_PIN_12
 #define LED_GREEN_GPIO_Port GPIOG
 #define LED_YELLOW_Pin GPIO_PIN_13
