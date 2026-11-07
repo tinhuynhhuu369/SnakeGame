@@ -1443,6 +1443,12 @@
                 <name>$PROJ_DIR$\..\Hardware_Core\BSP\src\BuzzerDriver.c</name>
             </file>
             <file>
+                <name>$PROJ_DIR$\..\Hardware_Core\BSP\src\GPIO.c</name>
+            </file>
+            <file>
+                <name>$PROJ_DIR$\..\Hardware_Core\BSP\src\LCD.c</name>
+            </file>
+            <file>
                 <name>$PROJ_DIR$\..\Hardware_Core\BSP\src\LedDriver.c</name>
             </file>
             <file>

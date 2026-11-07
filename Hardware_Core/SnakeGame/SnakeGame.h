@@ -3,6 +3,8 @@
 
 #include "main.h"
 
+#include "GPIO.h"
+
 #include "LedDriver.h"
 
 #include "BuzzerDriver.h"
@@ -10,6 +12,8 @@
 #include "TimerDriver.h"
 
 #include "ButtonDriver.h"
+
+#include "LCD.h"
 
 void Hardware_Init(void);
 

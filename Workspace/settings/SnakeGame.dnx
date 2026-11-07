@@ -12,12 +12,12 @@
         <ByteLimit>50</ByteLimit>
     </Stack>
     <PlDriver>
-        <FirstRun>0</FirstRun>
         <MemConfigValue>C:\Program Files\IAR Systems\Embedded Workbench 9.1\arm\CONFIG\debugger\ST\STM32H563xI.ddf</MemConfigValue>
+        <FirstRun>0</FirstRun>
     </PlDriver>
     <ArmDriver>
-        <EnableCache>0</EnableCache>
         <EnforceMemoryConfiguration>1</EnforceMemoryConfiguration>
+        <EnableCache>0</EnableCache>
     </ArmDriver>
     <JLinkDriver>
         <LeaveTargetRunning>_ 0</LeaveTargetRunning>
@@ -26,17 +26,12 @@
         <jlinkResetStrategy>0</jlinkResetStrategy>
     </JLinkDriver>
     <DebugChecksum>
-        <Checksum>261315967</Checksum>
+        <Checksum>1076114067</Checksum>
     </DebugChecksum>
     <Exceptions>
         <StopOnUncaught>_ 0</StopOnUncaught>
         <StopOnThrow>_ 0</StopOnThrow>
     </Exceptions>
-    <LogFile>
-        <LoggingEnabled>_ 0</LoggingEnabled>
-        <LogFile>_ "$PROJ_DIR$\LogFile1.log"</LogFile>
-        <Category2>_ 2</Category2>
-    </LogFile>
     <Disassembly>
         <MixedMode>1</MixedMode>
     </Disassembly>
@@ -48,21 +43,26 @@
         <Enabled>0</Enabled>
         <ShowSource>0</ShowSource>
     </Trace2>
+    <CallStack>
+        <ShowArgs>0</ShowArgs>
+    </CallStack>
     <DisassembleMode>
         <mode>0</mode>
     </DisassembleMode>
     <Breakpoints2>
         <Count>0</Count>
     </Breakpoints2>
-    <TermIOLog>
-        <LoggingEnabled>_ 0</LoggingEnabled>
-        <LogFile>_ ""</LogFile>
-    </TermIOLog>
     <Aliases>
         <Count>0</Count>
         <SuppressDialog>0</SuppressDialog>
     </Aliases>
-    <CallStack>
-        <ShowArgs>0</ShowArgs>
-    </CallStack>
+    <TermIOLog>
+        <LoggingEnabled>_ 0</LoggingEnabled>
+        <LogFile>_ ""</LogFile>
+    </TermIOLog>
+    <LogFile>
+        <LoggingEnabled>_ 0</LoggingEnabled>
+        <LogFile>_ "$PROJ_DIR$\LogFile1.log"</LogFile>
+        <Category2>_ 2</Category2>
+    </LogFile>
 </settings>
