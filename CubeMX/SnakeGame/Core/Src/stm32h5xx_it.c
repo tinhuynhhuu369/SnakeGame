@@ -204,7 +204,13 @@ void SysTick_Handler(void)
   */
 void EXTI0_IRQHandler(void)
 {
+  /* USER CODE BEGIN EXTI0_IRQn 0 */
+
+  /* USER CODE END EXTI0_IRQn 0 */
   HAL_GPIO_EXTI_IRQHandler(HOME_BTN_Pin);
+  /* USER CODE BEGIN EXTI0_IRQn 1 */
+
+  /* USER CODE END EXTI0_IRQn 1 */
 }
 
 /**
@@ -212,7 +218,13 @@ void EXTI0_IRQHandler(void)
   */
 void EXTI1_IRQHandler(void)
 {
+  /* USER CODE BEGIN EXTI1_IRQn 0 */
+
+  /* USER CODE END EXTI1_IRQn 0 */
   HAL_GPIO_EXTI_IRQHandler(RETURN_BTN_Pin);
+  /* USER CODE BEGIN EXTI1_IRQn 1 */
+
+  /* USER CODE END EXTI1_IRQn 1 */
 }
 
 /**
@@ -220,7 +232,13 @@ void EXTI1_IRQHandler(void)
   */
 void EXTI2_IRQHandler(void)
 {
+  /* USER CODE BEGIN EXTI2_IRQn 0 */
+
+  /* USER CODE END EXTI2_IRQn 0 */
   HAL_GPIO_EXTI_IRQHandler(OK_BTN_Pin);
+  /* USER CODE BEGIN EXTI2_IRQn 1 */
+
+  /* USER CODE END EXTI2_IRQn 1 */
 }
 
 /**
@@ -228,7 +246,13 @@ void EXTI2_IRQHandler(void)
   */
 void EXTI4_IRQHandler(void)
 {
+  /* USER CODE BEGIN EXTI4_IRQn 0 */
+
+  /* USER CODE END EXTI4_IRQn 0 */
   HAL_GPIO_EXTI_IRQHandler(DOWN_BTN_Pin);
+  /* USER CODE BEGIN EXTI4_IRQn 1 */
+
+  /* USER CODE END EXTI4_IRQn 1 */
 }
 
 /**
@@ -236,7 +260,13 @@ void EXTI4_IRQHandler(void)
   */
 void EXTI5_IRQHandler(void)
 {
+  /* USER CODE BEGIN EXTI5_IRQn 0 */
+
+  /* USER CODE END EXTI5_IRQn 0 */
   HAL_GPIO_EXTI_IRQHandler(UP_BTN_Pin);
+  /* USER CODE BEGIN EXTI5_IRQn 1 */
+
+  /* USER CODE END EXTI5_IRQn 1 */
 }
 
 /**
@@ -244,7 +274,13 @@ void EXTI5_IRQHandler(void)
   */
 void EXTI13_IRQHandler(void)
 {
+  /* USER CODE BEGIN EXTI13_IRQn 0 */
+
+  /* USER CODE END EXTI13_IRQn 0 */
   HAL_GPIO_EXTI_IRQHandler(LEFT_BTN_Pin);
+  /* USER CODE BEGIN EXTI13_IRQn 1 */
+
+  /* USER CODE END EXTI13_IRQn 1 */
 }
 
 /**
@@ -252,7 +288,13 @@ void EXTI13_IRQHandler(void)
   */
 void EXTI15_IRQHandler(void)
 {
+  /* USER CODE BEGIN EXTI15_IRQn 0 */
+
+  /* USER CODE END EXTI15_IRQn 0 */
   HAL_GPIO_EXTI_IRQHandler(RIGHT_BTN_Pin);
+  /* USER CODE BEGIN EXTI15_IRQn 1 */
+
+  /* USER CODE END EXTI15_IRQn 1 */
 }
 
 /**
@@ -274,7 +316,13 @@ void TIM6_IRQHandler(void)
   */
 void TIM7_IRQHandler(void)
 {
+  /* USER CODE BEGIN TIM7_IRQn 0 */
+
+  /* USER CODE END TIM7_IRQn 0 */
   HAL_TIM_IRQHandler(&htim7);
+  /* USER CODE BEGIN TIM7_IRQn 1 */
+
+  /* USER CODE END TIM7_IRQn 1 */
 }
 
 /* USER CODE BEGIN 1 */

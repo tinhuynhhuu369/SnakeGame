@@ -44,6 +44,8 @@
 TIM_HandleTypeDef htim6;
 TIM_HandleTypeDef htim7;
 
+SRAM_HandleTypeDef hsram1;
+
 /* USER CODE BEGIN PV */
 
 /* USER CODE END PV */
@@ -55,6 +57,7 @@ static void MX_GPIO_Init(void);
 static void MX_ICACHE_Init(void);
 static void MX_TIM6_Init(void);
 static void MX_TIM7_Init(void);
+static void MX_FMC_Init(void);
 /* USER CODE BEGIN PFP */
 
 /* USER CODE END PFP */
@@ -99,6 +102,7 @@ int main(void)
   MX_ICACHE_Init();
   MX_TIM6_Init();
   MX_TIM7_Init();
+  MX_FMC_Init();
   /* USER CODE BEGIN 2 */
   LedDriver_Init();
   /* USER CODE END 2 */
@@ -108,11 +112,7 @@ int main(void)
   while (1)
   {
     /* USER CODE END WHILE */
-    BuzzerDriver_On();
-    HAL_Delay(200);
-    BuzzerDriver_Off();
-    HAL_Delay(800);
-    TestLedDriver();
+
     /* USER CODE BEGIN 3 */
   }
   /* USER CODE END 3 */
@@ -282,6 +282,63 @@ static void MX_TIM7_Init(void)
 
 }
 
+/* FMC initialization function */
+static void MX_FMC_Init(void)
+{
+
+  /* USER CODE BEGIN FMC_Init 0 */
+
+  /* USER CODE END FMC_Init 0 */
+
+  FMC_NORSRAM_TimingTypeDef Timing = {0};
+
+  /* USER CODE BEGIN FMC_Init 1 */
+
+  /* USER CODE END FMC_Init 1 */
+
+  /** Perform the SRAM1 memory initialization sequence
+  */
+  hsram1.Instance = FMC_NORSRAM_DEVICE;
+  hsram1.Extended = FMC_NORSRAM_EXTENDED_DEVICE;
+  /* hsram1.Init */
+  hsram1.Init.NSBank = FMC_NORSRAM_BANK3;
+  hsram1.Init.DataAddressMux = FMC_DATA_ADDRESS_MUX_DISABLE;
+  hsram1.Init.MemoryType = FMC_MEMORY_TYPE_SRAM;
+  hsram1.Init.MemoryDataWidth = FMC_NORSRAM_MEM_BUS_WIDTH_16;
+  hsram1.Init.BurstAccessMode = FMC_BURST_ACCESS_MODE_DISABLE;
+  hsram1.Init.WaitSignalPolarity = FMC_WAIT_SIGNAL_POLARITY_LOW;
+  hsram1.Init.WaitSignalActive = FMC_WAIT_TIMING_BEFORE_WS;
+  hsram1.Init.WriteOperation = FMC_WRITE_OPERATION_ENABLE;
+  hsram1.Init.WaitSignal = FMC_WAIT_SIGNAL_DISABLE;
+  hsram1.Init.ExtendedMode = FMC_EXTENDED_MODE_DISABLE;
+  hsram1.Init.AsynchronousWait = FMC_ASYNCHRONOUS_WAIT_DISABLE;
+  hsram1.Init.WriteBurst = FMC_WRITE_BURST_DISABLE;
+  hsram1.Init.ContinuousClock = FMC_CONTINUOUS_CLOCK_SYNC_ONLY;
+  hsram1.Init.WriteFifo = FMC_WRITE_FIFO_ENABLE;
+  hsram1.Init.NBLSetupTime = 0;
+  hsram1.Init.PageSize = FMC_PAGE_SIZE_NONE;
+  hsram1.Init.MaxChipSelectPulse = DISABLE;
+  /* Timing */
+  Timing.AddressSetupTime = 3;
+  Timing.AddressHoldTime = 15;
+  Timing.DataSetupTime = 4;
+  Timing.DataHoldTime = 3;
+  Timing.BusTurnAroundDuration = 0;
+  Timing.CLKDivision = 16;
+  Timing.DataLatency = 17;
+  Timing.AccessMode = FMC_ACCESS_MODE_A;
+  /* ExtTiming */
+
+  if (HAL_SRAM_Init(&hsram1, &Timing, NULL) != HAL_OK)
+  {
+    Error_Handler( );
+  }
+
+  /* USER CODE BEGIN FMC_Init 2 */
+
+  /* USER CODE END FMC_Init 2 */
+}
+
 /**
   * @brief GPIO Initialization Function
   * @param None
@@ -295,27 +352,36 @@ static void MX_GPIO_Init(void)
   /* USER CODE END MX_GPIO_Init_1 */
 
   /* GPIO Ports Clock Enable */
-  __HAL_RCC_GPIOH_CLK_ENABLE();
   __HAL_RCC_GPIOF_CLK_ENABLE();
+  __HAL_RCC_GPIOH_CLK_ENABLE();
   __HAL_RCC_GPIOG_CLK_ENABLE();
+  __HAL_RCC_GPIOE_CLK_ENABLE();
   __HAL_RCC_GPIOD_CLK_ENABLE();
+  __HAL_RCC_GPIOA_CLK_ENABLE();
 
   /*Configure GPIO pin Output Level */
-  HAL_GPIO_WritePin(GPIOF, BUZZER_Pin|LED_RED_Pin, GPIO_PIN_RESET);
+  HAL_GPIO_WritePin(GPIOF, LCD_BackLight_Pin|BUZZER_Pin|LED_RED_Pin, GPIO_PIN_RESET);
+
+  /*Configure GPIO pin Output Level */
+  HAL_GPIO_WritePin(LCD_RES_GPIO_Port, LCD_RES_Pin, GPIO_PIN_RESET);
 
   /*Configure GPIO pin Output Level */
   HAL_GPIO_WritePin(GPIOG, LED_GREEN_Pin|LED_YELLOW_Pin, GPIO_PIN_RESET);
 
-  /*Configure GPIO pins : RETURN_BTN_Pin OK_BTN_Pin DOWN_BTN_Pin UP_BTN_Pin
-                           RIGHT_BTN_Pin */
-  GPIO_InitStruct.Pin = RETURN_BTN_Pin|OK_BTN_Pin|DOWN_BTN_Pin|UP_BTN_Pin
-                          |RIGHT_BTN_Pin;
+  /*Configure GPIO pins : RETURN_BTN_Pin OK_BTN_Pin UP_BTN_Pin RIGHT_BTN_Pin */
+  GPIO_InitStruct.Pin = RETURN_BTN_Pin|OK_BTN_Pin|UP_BTN_Pin|RIGHT_BTN_Pin;
   GPIO_InitStruct.Mode = GPIO_MODE_IT_FALLING;
   GPIO_InitStruct.Pull = GPIO_PULLUP;
   HAL_GPIO_Init(GPIOF, &GPIO_InitStruct);
 
-  /*Configure GPIO pins : BUZZER_Pin LED_RED_Pin */
-  GPIO_InitStruct.Pin = BUZZER_Pin|LED_RED_Pin;
+  /*Configure GPIO pin : DOWN_BTN_Pin */
+  GPIO_InitStruct.Pin = DOWN_BTN_Pin;
+  GPIO_InitStruct.Mode = GPIO_MODE_IT_RISING;
+  GPIO_InitStruct.Pull = GPIO_NOPULL;
+  HAL_GPIO_Init(DOWN_BTN_GPIO_Port, &GPIO_InitStruct);
+
+  /*Configure GPIO pins : LCD_BackLight_Pin BUZZER_Pin LED_RED_Pin */
+  GPIO_InitStruct.Pin = LCD_BackLight_Pin|BUZZER_Pin|LED_RED_Pin;
   GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_PP;
   GPIO_InitStruct.Pull = GPIO_NOPULL;
   GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
@@ -332,6 +398,21 @@ static void MX_GPIO_Init(void)
   GPIO_InitStruct.Mode = GPIO_MODE_IT_FALLING;
   GPIO_InitStruct.Pull = GPIO_PULLUP;
   HAL_GPIO_Init(LEFT_BTN_GPIO_Port, &GPIO_InitStruct);
+
+  /*Configure GPIO pin : PA13 */
+  GPIO_InitStruct.Pin = GPIO_PIN_13;
+  GPIO_InitStruct.Mode = GPIO_MODE_AF_PP;
+  GPIO_InitStruct.Pull = GPIO_PULLUP;
+  GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
+  GPIO_InitStruct.Alternate = GPIO_AF0_TRACE;
+  HAL_GPIO_Init(GPIOA, &GPIO_InitStruct);
+
+  /*Configure GPIO pin : LCD_RES_Pin */
+  GPIO_InitStruct.Pin = LCD_RES_Pin;
+  GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_PP;
+  GPIO_InitStruct.Pull = GPIO_NOPULL;
+  GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
+  HAL_GPIO_Init(LCD_RES_GPIO_Port, &GPIO_InitStruct);
 
   /*Configure GPIO pins : LED_GREEN_Pin LED_YELLOW_Pin */
   GPIO_InitStruct.Pin = LED_GREEN_Pin|LED_YELLOW_Pin;
